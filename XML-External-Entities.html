@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML External Entities (XXE)</title>
+</head>
+<body>
+
+    
+    <h2>Introduction</h2>
+    <p>
+        To address security risks issue, OWASP has come up with a documents which represents a broad consensus 
+    about the most critical security risks to web applications. According to OWASR, companies should use this document as a guide to 
+    start changing the software development culture within the organization into one that produces more secure code. 
+    In terms of the risk assessment, OWASP TOP 10 analyses the following:</br>
+            - Thereat agents/ Attack Vectors <br>
+            - Security Weakness<br>
+            - Impact</br>
+    Based on the findings, the document provides an assessment of application vulnerability and recommends the ways to prevent an attack. 
+
+    </p>
+
+    <h2>XML External Entities (XXE)</h2>
+
+    <p>
+        Many older or poorly configured XML processors evaluate external entity references within XML documents. </br>
+        External entities can be used to disclose internal files using the file URI handler, internal file shares, internal port scanning, remote code execution, and denial of service attacks.
+    </p>
+    <h4>Thereat agents/ Attack Vectors</h4>
+    <p>
+        Attackers can exploit vulnerable XML processors if they can upload XML or include hostile content in an XML document, exploiting vulnerable code, dependencies or integrations.
+        </p>
+
+    <h4>Security Weakness</h4>
+    <p>
+        By default, many older XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing.</br>
+SAST tools can discover this issue by inspecting dependencies and configuration. DAST tools require additional manual steps to detect and exploit this issue. Manual testers need to be trained in how to test for XXE, as it not commonly tested as of 2017.
+    </p>
+    <h4>Impacts</h4>
+    These flaws can be used to extract data, execute a remote request from the server, scan internal systems, perform a denial-of-service attack, as well as execute other attacks. </br>
+    The business impact depends on the protection needs of all affected application and data.
+    
+    <h4>Is the application vulnerable?</h4>
+    <p>
+        Applications and in particular XML-based web services or downstream integrations might be vulnerable to attack if:</br>
+        * The application accepts XML directly or XML uploads, especially from untrusted sources, or inserts untrusted data into XML documents, which is then parsed by an XML processor.</br>
+        * Any of the XML processors in the application or SOAP based web services has document type definitions (DTDs) enabled. As the exact mechanism for disabling DTD processing varies by processor, it is good practice to consult a reference such as the OWASP Cheat Sheet ‘XXE Prevention’.</br>
+        * If the application uses SAML for identity processing within federated security or single sign on (SSO) purposes. SAML uses XML for identity assertions, and may be vulnerable.</br>
+        * If the application uses SOAP prior to version 1.2, it is likely susceptible to XXE attacks if XML entities are being passed to the SOAP framework.</br>
+        Being vulnerable to XXE attacks likely means that the application is vulnerable to denial of service attacks including the Billion Laughs attack. 
+    </p>
+    <h4>How to Prevent an attack</h4>
+    <p>
+        Developer training is essential to identify and mitigate XXE. Besides that, preventing XXE requires:</br>
+* Whenever possible, use less complex data formats such as JSON, and avoiding serialization of sensitive data.</br>
+* Patch or upgrade all XML processors and libraries in use by the application or on the underlying operating system. Use dependency checkers. Update SOAP to SOAP 1.2 or higher.</br>
+* Disable XML external entity and DTD processing in all XML parsers in the application, as per the OWASP Cheat Sheet ‘XXE Prevention’.</br>
+* Implement positive (“whitelisting”) server-side input validation, filtering, or sanitization to prevent hostile data within XML documents, headers, or nodes.</br>
+* Verify that XML or XSL file upload functionality validates incoming XML using XSD validation or similar.</br>
+* SAST tools can help detect XXE in source code, although manual code review is the best alternative in large, complex applications with many integrations.</br>
+If these controls are not possible, consider using virtual patching, API security gateways, or Web Application Firewalls (WAFs) to detect, monitor, and block XXE attacks.</br>
+    </p>
+   
+</body>
+</html>
