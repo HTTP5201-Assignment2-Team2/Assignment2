@@ -7,19 +7,67 @@
     <title>Sensitive Data Exposure</title>
 </head>
 <body>
-    <h1>Sensitive Data Exposure</h1>
 
-    <h3>Description</h3>
-
+    
+    <h2>Introduction</h2>
     <p>
-        Many web applications and APIs do not properly protect sensitive data, such as financial, healthcare, and PII. Attackers may steal or modify such weakly protected data to conduct credit card fraud, identity theft, or other crimes. Sensitive data may be compromised without extra protection, such as encryption at rest or in transit, and requires special precautions when exchanged with the browser.
+        To address security risks issue, OWASP has come up with a documents which represents a broad consensus 
+    about the most critical security risks to web applications. According to OWASR, companies should use this document as a guide to 
+    start changing the software development culture within the organization into one that produces more secure code. 
+    In terms of the risk assessment, OWASP TOP 10 analyses the following:</br>
+            - Thereat agents/ Attack Vectors <br>
+            - Security Weakness<br>
+            - Impact</br>
+    Based on the findings, the document provides an assessment of application vulnerability and recommends the ways to prevent an attack. 
+
     </p>
 
+    <h2>Sensitive Data Exposure</h2>
 
-    <h3>Summary</h3>
     <p>
-        </p>
-            
-    
+        Many web applications and APIs do not properly protect sensitive data, such as financial, healthcare, and PII. 
+        Attackers may steal or modify such weakly protected data to conduct credit card fraud, identity theft, or other crimes. 
+        Sensitive data may be compromised without extra protection, such as encryption at rest or in transit, and requires special precautions when exchanged with the browser.
+    </p>
+    <h4>Thereat agents/ Attack Vectors</h4>
+    <p>
+        A manual attack is genearlly required. Attackets steal keys or clear text data of the server while in transit or form the user's client such as browser. 
+    </p>
+    <h4>Security Weakness</h4>
+    <p>
+        The most common flaw is simply not encrypting sensitive data. 
+        When crypto is employed, weak key generation and management, and weak algorithm, protocol and cipher usage is common, 
+        particularly for weak password hashing storage techniques. For data in transit, server-side weaknesses are mainly easy to detect, but hard for data at rest
+    </p>
+    <h4>Impacts</h4>
+    Failure to encrypt data will compromise the sensitive personal information (PII) such as health records, credentials, personal data, and credit cards, 
+    which often require protection as defined by laws or regulations such as the EU GDPR or local privacy laws.
+
+    <h4>Is the application vulnerable?</h4>
+    <p>
+        For data in transit, server-side weaknesses are mainly easy to detect, but hard for data at rest. Therefore the first thing is to determine
+        the protection needs of data in transit and at rest. PII require extra protection. For all such data:<br>
+        - Is any data transmitted in clear text? This concerns protocols such as HTTP, SMTP, and FTP. External internet traffic is especially dangerous. 
+        Verify all internal traffic e.g. between load balancers, web servers, or back-end systems.</br>
+        - Are any old or weak cryptographic algorithms used either by default or in older code?</br>
+        - Are default crypto keys in use, weak crypto keys generated or re-used, or is proper key management or rotation missing?</br>
+        - Is encryption not enforced, e.g. are any user agent (browser) security directives or headers missing?</br>
+        - Does the user agent (e.g. app, mail client) not verify if the received server certificate is valid?</br>
+    </p>
+    <h4>How to Prevent an attack</h4>
+    <p>
+        There are many ways to prevent an attack. They include but not limited to:
+         - Classify data processed, stored or transmitted by an application. Identify which data is sensitive according to privacy laws, regulatory requirements, or business needs.</br>
+         - Apply controls as per the classification.</br>
+         - Don’t store sensitive data unnecessarily. Discard it as soon as possible or use PCI DSS compliant tokenization or even truncation. Data that is not retained cannot be stolen.</br>
+         - Make sure to encrypt all sensitive data at rest.</br>
+         - Ensure up-to-date and strong standard algorithms, protocols, and keys are in place; use proper key management.</br>
+         - Encrypt all data in transit with secure protocols such as TLS with perfect forward secrecy (PFS) ciphers, cipher prioritization by the server, and secure parameters. 
+           Enforce encryption using directives like HTTP Strict Transport Security (HSTS).</br>
+         - Disable caching for response that contain sensitive data.</br>
+         - Store passwords using strong adaptive and salted hashing functions with a work factor (delay factor), such as Argon2, scrypt, bcrypt or PBKDF2.</br>
+         - Verify independently the effectiveness of configuration and settings.</br>
+    </p>
+   
 </body>
 </html>
