@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Scripting</title>
+</head>
+<body>
+    <h1>Insecure Deserialization</h1>
+
+    <h2>Description</h2>
+    <p>
+        Insecure deserialization often leads to remote code execution. Even if deserialization flaws do not result in remote code 
+        execution, they can be used to perform attacks, including replay attacks, injection attacks, and privilege escalation attacks.
+    </p>
+
+    <h2> Two Primary Types of Attacks</h2>
+    <h2>Object and data structure related attacks</h2>
+    <p>
+        Where the attacker modifies application logic or achieves arbitrary remote code execution 
+        if there are classes available to the application that can change behavior during or after deserialization.
+    </p>
+
+    <h2>Typical data tampering attacks</h2>
+    <p>
+        Typical data tampering attacks such as access-control-related attacks where existing data structures are used but the content is changed.
+    </p>
+
+    <h2>Summary - Our Understanding</h2>
+    <p>
+        Serialization is the process that converts an object to a format that can later be restored.
+        Deserialization is the opposing process which takes data from a file, stream or network and rebuilds it into an object. 
+        Insecure deserialization is a vulnerability in which an untrusted or unknown data is used to either inflict a denial of service attack (DoS attack),
+        execute code, bypass authentication or further abuse the logic behind an application.
+
+    </p>
+</body>
+</html>
