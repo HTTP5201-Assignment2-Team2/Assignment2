@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Scripting XSS</title>
+</head>
+<body>
+    <h1>Cross-Site Scripting XSS</h1>
+
+    <h2>Description</h2>
+    <p>
+        XSS flaws occur whenever an application includes untrusted data in a new web page without proper validation or escaping,
+        or updates an existing web page with user-supplied data using a browser API that can create HTML or JavaScript. XSS allows 
+        attackers to execute scripts in the victim’s browser which can hijack user sessions, deface web sites, or redirect the user 
+        to malicious sites.
+    </p>
+ 
+    <h2>There are three forms of XSS, usually targeting users’ browsers:</h2>
+    <h3>Reflected XSS:</h3>
+    <p>
+        The application or API includes unvalidated and unescaped user input as part of HTML output.
+        A successful attack can allow the attacker to execute arbitrary HTML and JavaScript in the victim’s browser. 
+        Typically the user will need to interact with some malicious link that points to an attacker-controlled page,
+        such as malicious watering hole websites, advertisements, or similar.
+    </p>
+
+    <h3>Stored XSS:</h3>
+    <p>
+        The application or API stores unsanitized user input that is viewed at a later time by another user or an administrator. 
+        Stored XSS is often considered a high or critical risk.
+    </p>
+
+    
+    <h3> DOM XSS:</h3>
+    <p>
+        avaScript frameworks, single-page applications, and APIs that dynamically include attacker-controllable data to a page are vulnerable to DOM XSS. Ideally, 
+        the application would not send attacker-controllable data to unsafe JavaScript APIs.
+    </p>
+
+    <h2>How to Prevent XSS Attacks</h2>
+    <ul>
+        <li>Using frameworks that automatically escape XSS by design, such as the latest Ruby on Rails, React JS.
+            Learn the limitations of each framework’s XSS protection and appropriately handle the use cases which are not covered.</li>
+        <li>Using frameworks that automatically escape XSS by design, such as the latest Ruby on Rails, React JS. 
+            Learn the limitations of each framework’s XSS protection and appropriately handle the use cases which are not covered.</li>
+        <li>Applying context-sensitive encoding when modifying the browser document on the client side acts against DOM XSS. </li>
+        <li>Enabling a Content Security Policy (CSP) as a defense-in-depth mitigating control against XSS. 
+            It is effective if no other vulnerabilities exist that would allow placing malicious code via local file includes 
+            (e.g. path traversal overwrites or vulnerable libraries from permitted content delivery networks).</li>
+    </ul>
+
+    <h2>Summary - Our Understanding</h2>
+    <p>
+        Cross-site scripting (XSS) is a type of security vulnerability typically found in web applications.
+        XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users and steal the private sensitive informations.
+        The attacker aims to execute malicious scripts in a web browser of the victim by including malicious code in a web page or web application.
+        The actual attack occurs when the victim visits the web page or web application that executes the malicious code and it becomes a vehicle
+        to deliver the malicious script to the user’s browser.
+    </p>
+</body>
+</html>
