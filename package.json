@@ -1,0 +1,19 @@
+{
+  "name": "assignment2",
+  "version": "1.0.0",
+  "description": "- Natalia Kolesnikova - Manal Solanki - Tingwei Xie - Smital Christan  - Ambaram Srivastava",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HTTP5201-Assignment2-Team2/Assignment2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HTTP5201-Assignment2-Team2/Assignment2/issues"
+  },
+  "homepage": "https://github.com/HTTP5201-Assignment2-Team2/Assignment2#readme"
+}
