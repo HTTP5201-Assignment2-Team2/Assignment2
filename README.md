@@ -18,3 +18,4 @@
 
 
 - One Page one branch.
+- We have done each page in a branch and then merged each branch to the main.
